@@ -4,19 +4,19 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, FileText } from "lucide-react";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [katalogDropdownOpen, setKatalogDropdownOpen] = useState(false);
+  const pathname = usePathname();
 
   const navigation = [
-    { name: "Ana Sayfa", href: "/#hero" },
-    { name: "Hakkımızda", href: "/#hakkimizda" },
-    { name: "Faaliyet Alanları", href: "/#faaliyet-alanlari" },
-    { name: "İSG Çözümleri", href: "/#isg-cozumleri" },
-    { name: "Akıllı Çözümler", href: "/#akilli-cozumler" },
-    { name: "Referanslar", href: "/#referanslar" },
-    { name: "İletişim", href: "/#iletisim" },
+    { name: "Ana Sayfa", href: "/" },
+    { name: "Hakkımızda", href: "/hakkimizda" },
+    { name: "İSG Çözümleri", href: "/isg-cozumleri" },
+    { name: "Akıllı Çözümler", href: "/akilli-cozumler" },
+    { name: "Referanslar", href: "/referanslar" },
   ];
 
   const kataloglar = [
@@ -24,6 +24,11 @@ export default function Header() {
     { name: "Apex KKD Kataloğu", href: "/katalog/apex" },
     { name: "İSG Çözümleri Kataloğu", href: "/katalog/isg-cozumleri" },
   ];
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur">
@@ -52,25 +57,31 @@ export default function Header() {
         </div>
 
         {/* Desktop navigation */}
-        <div className="hidden lg:flex lg:gap-x-6">
+        <div className="hidden lg:flex lg:gap-x-6 items-center">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium leading-6 text-gray-700 hover:text-primary transition-colors"
+              className={`text-sm font-medium leading-6 transition-colors ${
+                isActive(item.href)
+                  ? "text-primary"
+                  : "text-gray-700 hover:text-primary"
+              }`}
             >
               {item.name}
             </Link>
           ))}
-        </div>
 
-        {/* Kataloglar dropdown - Desktop */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+          {/* Kataloglar dropdown */}
           <div className="relative">
             <button
               onClick={() => setKatalogDropdownOpen(!katalogDropdownOpen)}
               onBlur={() => setTimeout(() => setKatalogDropdownOpen(false), 150)}
-              className="inline-flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-primary transition-colors"
+              className={`inline-flex items-center gap-1 text-sm font-medium transition-colors ${
+                pathname.startsWith("/katalog")
+                  ? "text-primary"
+                  : "text-gray-700 hover:text-primary"
+              }`}
             >
               <FileText className="h-4 w-4" />
               Kataloglar
@@ -92,8 +103,12 @@ export default function Header() {
               </div>
             )}
           </div>
-          <Link href="/#iletisim">
-            <Button>İletişime Geç</Button>
+        </div>
+
+        {/* CTA Button */}
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <Link href="/iletisim">
+            <Button>İletişim</Button>
           </Link>
         </div>
       </nav>
@@ -106,7 +121,11 @@ export default function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="block rounded-lg px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50"
+                className={`block rounded-lg px-3 py-2 text-base font-medium ${
+                  isActive(item.href)
+                    ? "bg-primary/10 text-primary"
+                    : "text-gray-700 hover:bg-gray-50"
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
@@ -126,8 +145,8 @@ export default function Header() {
               ))}
             </div>
             <div className="pt-4">
-              <Link href="/#iletisim" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full">İletişime Geç</Button>
+              <Link href="/iletisim" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full">İletişim</Button>
               </Link>
             </div>
           </div>
