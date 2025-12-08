@@ -1,8 +1,22 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Users, Target, Award, TrendingUp, ArrowRight } from "lucide-react";
 
 export default function HakkimizdaPage() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const heroImages = ["/isg.png", "/akilli.png"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   const values = [
     {
       icon: Users,
@@ -44,11 +58,38 @@ export default function HakkimizdaPage() {
       <section className="py-16 lg:py-24 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center">
-                <img src="/logo.png" alt="SmartGuide" className="w-3/4 h-auto" />
+            {/* Image Carousel */}
+            <div className="relative aspect-square rounded-2xl overflow-hidden">
+              {heroImages.map((image, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    index === activeSlide ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  <div
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url('${image}')` }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent" />
+                </div>
+              ))}
+              {/* Carousel Indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {heroImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === activeSlide
+                        ? "bg-white w-6"
+                        : "bg-white/50 hover:bg-white/70"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
+
             <div>
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
                 SmartGuide Hakkında

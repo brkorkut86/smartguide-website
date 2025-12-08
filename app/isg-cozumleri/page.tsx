@@ -50,8 +50,16 @@ export default function ISGCozumleriPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 py-16 lg:py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-center">
+      <section className="relative bg-gray-900 py-16 lg:py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('/isg.png')` }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/50" />
+        </div>
+        <div className="relative mx-auto max-w-7xl px-6 lg:px-8 text-center">
           <div className="inline-flex items-center gap-2 bg-primary/20 text-primary-100 px-4 py-2 rounded-full mb-6">
             <Shield className="h-5 w-5" />
             <span className="text-sm font-medium text-gray-300">İş Sağlığı ve Güvenliği</span>

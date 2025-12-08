@@ -57,7 +57,7 @@ export default function Header() {
         </div>
 
         {/* Desktop navigation */}
-        <div className="hidden lg:flex lg:gap-x-5 items-center">
+        <div className="hidden lg:flex lg:items-center lg:gap-x-5">
           {navigation.map((item) => (
             <Link
               key={item.name}
@@ -72,12 +72,12 @@ export default function Header() {
             </Link>
           ))}
 
-          {/* Kataloglar dropdown */}
-          <div className="relative">
+          {/* Kataloglar dropdown - fixed alignment */}
+          <div className="relative flex items-center">
             <button
               onClick={() => setKatalogDropdownOpen(!katalogDropdownOpen)}
               onBlur={() => setTimeout(() => setKatalogDropdownOpen(false), 150)}
-              className={`inline-flex items-center gap-1 text-sm font-medium transition-colors ${
+              className={`inline-flex items-center gap-1 text-sm font-medium leading-6 transition-colors ${
                 pathname.startsWith("/katalog")
                   ? "text-primary"
                   : "text-gray-700 hover:text-primary"
@@ -88,7 +88,7 @@ export default function Header() {
               <ChevronDown className={`h-4 w-4 transition-transform ${katalogDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
             {katalogDropdownOpen && (
-              <div className="absolute right-0 mt-2 w-56 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-50">
+              <div className="absolute top-full right-0 mt-2 w-56 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-50">
                 <div className="py-1">
                   {kataloglar.map((katalog) => (
                     <Link
