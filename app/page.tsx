@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -14,9 +17,38 @@ import {
   Zap,
   Target,
   Users,
+  FileText,
+  Download,
 } from "lucide-react";
 
 export default function Home() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  const heroSlides = [
+    {
+      image: "/isg.png",
+      title: "İSG Çözümleri",
+      subtitle: "Kişisel Koruyucu Donanımlar, Eğitim ve Danışmanlık",
+      href: "/isg-cozumleri",
+      buttonText: "İSG Çözümleri",
+    },
+    {
+      image: "/akilli.png",
+      title: "Akıllı Çözümler",
+      subtitle: "Endüstriyel Yapay Zeka Uygulamaları",
+      href: "/akilli-cozumler",
+      buttonText: "Akıllı Çözümler",
+    },
+  ];
+
+  // Auto-rotate carousel every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
+
   const valueProps = [
     {
       icon: Users,
@@ -35,15 +67,50 @@ export default function Home() {
     },
   ];
 
+  const kataloglar = [
+    {
+      title: "SmartGuide Sunumu",
+      description: "Şirket tanıtımı, faaliyet alanları ve referanslar",
+      href: "/katalog/sunum",
+      icon: FileText,
+    },
+    {
+      title: "Apex KKD Kataloğu",
+      description: "Kişisel Koruyucu Donanım ürün kataloğu",
+      href: "/katalog/apex",
+      icon: HardHat,
+    },
+    {
+      title: "İSG Çözümleri Kataloğu",
+      description: "Eğitim, danışmanlık ve etkinlik kataloğu",
+      href: "/katalog/isg-cozumleri",
+      icon: Shield,
+    },
+  ];
+
   const referanslar = [
     "Mercedes-Benz", "Beko", "Roketsan", "Aselsan", "Borusan", "Hidromek"
   ];
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 to-gray-800 py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/logo.png')] bg-center bg-no-repeat opacity-5" style={{ backgroundSize: '600px' }} />
+      {/* Hero Section with Carousel */}
+      <section className="relative bg-gray-900 py-20 lg:py-32 overflow-hidden">
+        {/* Background Images */}
+        {heroSlides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === activeSlide ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url('${slide.image}')` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/50" />
+          </div>
+        ))}
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-3xl text-center">
@@ -55,18 +122,52 @@ export default function Home() {
               iş sağlığı ve güvenliği çözümleri ile yapay zeka tabanlı akıllı uygulamaları
               tek çatı altında sunar.
             </p>
+
+            {/* Carousel Buttons */}
             <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
               <Link href="/isg-cozumleri">
-                <Button size="xl" className="bg-primary hover:bg-primary/90">
+                <Button
+                  size="xl"
+                  className={`transition-all duration-300 ${
+                    activeSlide === 0
+                      ? "bg-primary hover:bg-primary/90 scale-105"
+                      : "bg-white/20 hover:bg-white/30 text-white"
+                  }`}
+                  onClick={() => setActiveSlide(0)}
+                >
+                  <Shield className="mr-2 h-5 w-5" />
                   İSG Çözümleri
-                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/akilli-cozumler">
-                <Button size="xl" variant="outline" className="border-white text-white hover:bg-white/10">
+                <Button
+                  size="xl"
+                  className={`transition-all duration-300 ${
+                    activeSlide === 1
+                      ? "bg-accent hover:bg-accent/90 scale-105"
+                      : "bg-white/20 hover:bg-white/30 text-white"
+                  }`}
+                  onClick={() => setActiveSlide(1)}
+                >
+                  <Brain className="mr-2 h-5 w-5" />
                   Akıllı Çözümler
                 </Button>
               </Link>
+            </div>
+
+            {/* Carousel Indicators */}
+            <div className="mt-8 flex justify-center gap-2">
+              {heroSlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === activeSlide
+                      ? index === 0 ? "bg-primary w-8" : "bg-accent w-8"
+                      : "bg-white/40 hover:bg-white/60"
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -178,11 +279,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* References Preview */}
-      <section className="py-16 lg:py-20 bg-white">
+      {/* Kataloglar Section */}
+      <section className="py-16 lg:py-24 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full mb-4">
+              <Download className="h-5 w-5 text-primary" />
+              <span className="text-sm font-medium text-primary">Dijital Kataloglar</span>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              Kataloglarımız
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Ürün ve hizmetlerimiz hakkında detaylı bilgi için kataloglarımızı inceleyin
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {kataloglar.map((katalog) => {
+              const Icon = katalog.icon;
+              return (
+                <Card key={katalog.title} className="hover:shadow-xl transition-shadow text-center">
+                  <CardHeader>
+                    <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                      <Icon className="h-8 w-8" />
+                    </div>
+                    <CardTitle className="text-xl">{katalog.title}</CardTitle>
+                    <CardDescription>{katalog.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Link href={katalog.href}>
+                      <Button className="w-full">
+                        <FileText className="mr-2 h-4 w-4" />
+                        Kataloğu Görüntüle
+                      </Button>
+                    </Link>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* References Preview */}
+      <section className="py-16 lg:py-20 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center mb-12">
+            <div className="inline-flex items-center gap-2 bg-gray-200 px-4 py-2 rounded-full mb-4">
               <Building2 className="h-5 w-5 text-gray-600" />
               <span className="text-sm font-medium text-gray-600">Güvenilir İş Ortağı</span>
             </div>
@@ -198,7 +342,7 @@ export default function Home() {
             {referanslar.map((ref) => (
               <div
                 key={ref}
-                className="bg-gray-50 rounded-xl p-4 flex items-center justify-center h-20 hover:bg-gray-100 transition-colors"
+                className="bg-white rounded-xl p-4 flex items-center justify-center h-20 hover:shadow-md transition-shadow"
               >
                 <span className="font-semibold text-gray-700">{ref}</span>
               </div>

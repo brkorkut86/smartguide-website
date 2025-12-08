@@ -14,9 +14,9 @@ export default function Header() {
   const navigation = [
     { name: "Ana Sayfa", href: "/" },
     { name: "Hakkımızda", href: "/hakkimizda" },
+    { name: "Referanslarımız", href: "/referanslar" },
     { name: "İSG Çözümleri", href: "/isg-cozumleri" },
     { name: "Akıllı Çözümler", href: "/akilli-cozumler" },
-    { name: "Referanslar", href: "/referanslar" },
   ];
 
   const kataloglar = [
@@ -57,7 +57,7 @@ export default function Header() {
         </div>
 
         {/* Desktop navigation */}
-        <div className="hidden lg:flex lg:gap-x-6 items-center">
+        <div className="hidden lg:flex lg:gap-x-5 items-center">
           {navigation.map((item) => (
             <Link
               key={item.name}
@@ -103,10 +103,8 @@ export default function Header() {
               </div>
             )}
           </div>
-        </div>
 
-        {/* CTA Button */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          {/* İletişim Button */}
           <Link href="/iletisim">
             <Button>İletişim</Button>
           </Link>

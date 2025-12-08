@@ -3,17 +3,6 @@ import Link from "next/link";
 import { ArrowRight, Building2, Brain, Shield } from "lucide-react";
 
 export default function ReferanslarPage() {
-  const referanslarAkilli = [
-    { name: "Beko", sector: "Beyaz Eşya" },
-    { name: "Roketsan", sector: "Savunma" },
-    { name: "Aselsan", sector: "Savunma & Elektronik" },
-    { name: "Betonstar", sector: "İnşaat Ekipmanları" },
-    { name: "Borusan", sector: "Çelik & Otomotiv" },
-    { name: "Enerjisa", sector: "Enerji" },
-    { name: "Coca-Cola", sector: "İçecek" },
-    { name: "Tofaş", sector: "Otomotiv" },
-  ];
-
   const referanslarISG = [
     { name: "Mercedes-Benz", sector: "Otomotiv" },
     { name: "Hidromek", sector: "İş Makineleri" },
@@ -23,6 +12,17 @@ export default function ReferanslarPage() {
     { name: "Karsan", sector: "Otomotiv" },
     { name: "BMC", sector: "Otomotiv & Savunma" },
     { name: "Türk Traktör", sector: "Tarım Makineleri" },
+  ];
+
+  const referanslarAkilli = [
+    { name: "Beko", sector: "Beyaz Eşya" },
+    { name: "Roketsan", sector: "Savunma" },
+    { name: "Aselsan", sector: "Savunma & Elektronik" },
+    { name: "Betonstar", sector: "İnşaat Ekipmanları" },
+    { name: "Borusan", sector: "Çelik & Otomotiv" },
+    { name: "Enerjisa", sector: "Enerji" },
+    { name: "Coca-Cola", sector: "İçecek" },
+    { name: "Tofaş", sector: "Otomotiv" },
   ];
 
   return (
@@ -67,46 +67,8 @@ export default function ReferanslarPage() {
         </div>
       </section>
 
-      {/* Akıllı Çözümler Referansları */}
+      {/* İSG Çözümleri Referansları - First */}
       <section className="py-16 lg:py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="flex items-center gap-4 mb-12">
-            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-              <Brain className="h-6 w-6 text-accent" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">Akıllı Çözümler</h2>
-              <p className="text-gray-600">Yapay zeka ve dijital dönüşüm projelerimiz</p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {referanslarAkilli.map((ref) => (
-              <div
-                key={ref.name}
-                className="bg-gray-50 rounded-2xl p-6 hover:bg-accent/5 hover:shadow-md transition-all text-center group"
-              >
-                <div className="text-xl font-bold text-gray-900 group-hover:text-accent transition-colors mb-1">
-                  {ref.name}
-                </div>
-                <div className="text-sm text-gray-500">{ref.sector}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 text-center">
-            <Link href="/akilli-cozumler">
-              <Button variant="outline">
-                Akıllı Çözümlerimizi İnceleyin
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* İSG Çözümleri Referansları */}
-      <section className="py-16 lg:py-24 bg-gray-50">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex items-center gap-4 mb-12">
             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -122,7 +84,7 @@ export default function ReferanslarPage() {
             {referanslarISG.map((ref) => (
               <div
                 key={ref.name}
-                className="bg-white rounded-2xl p-6 hover:bg-primary/5 hover:shadow-md transition-all text-center group"
+                className="bg-gray-50 rounded-2xl p-6 hover:bg-primary/5 hover:shadow-md transition-all text-center group"
               >
                 <div className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors mb-1">
                   {ref.name}
@@ -136,6 +98,44 @@ export default function ReferanslarPage() {
             <Link href="/isg-cozumleri">
               <Button variant="outline">
                 İSG Çözümlerimizi İnceleyin
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Akıllı Çözümler Referansları - Second */}
+      <section className="py-16 lg:py-24 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="flex items-center gap-4 mb-12">
+            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+              <Brain className="h-6 w-6 text-accent" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">Akıllı Çözümler</h2>
+              <p className="text-gray-600">Yapay zeka ve dijital dönüşüm projelerimiz</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {referanslarAkilli.map((ref) => (
+              <div
+                key={ref.name}
+                className="bg-white rounded-2xl p-6 hover:bg-accent/5 hover:shadow-md transition-all text-center group"
+              >
+                <div className="text-xl font-bold text-gray-900 group-hover:text-accent transition-colors mb-1">
+                  {ref.name}
+                </div>
+                <div className="text-sm text-gray-500">{ref.sector}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link href="/akilli-cozumler">
+              <Button variant="outline">
+                Akıllı Çözümlerimizi İnceleyin
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
