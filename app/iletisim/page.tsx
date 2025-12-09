@@ -17,15 +17,46 @@ export default function IletisimPage() {
     message: "",
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormSubmitted(true);
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({ name: "", email: "", company: "", phone: "", subject: "", message: "" });
-    }, 3000);
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Get your key at web3forms.com
+          subject: `SmartGuide İletişim Formu: ${formData.subject}`,
+          from_name: formData.name,
+          name: formData.name,
+          email: formData.email,
+          company: formData.company || "Belirtilmedi",
+          phone: formData.phone || "Belirtilmedi",
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormSubmitted(true);
+        setFormData({ name: "", email: "", company: "", phone: "", subject: "", message: "" });
+        setTimeout(() => setFormSubmitted(false), 5000);
+      } else {
+        setError("Bir hata oluştu. Lütfen tekrar deneyin.");
+      }
+    } catch {
+      setError("Bir hata oluştu. Lütfen tekrar deneyin.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -124,10 +155,10 @@ export default function IletisimPage() {
                 </div>
               </div>
 
-              {/* Map placeholder */}
+              {/* Map */}
               <div className="rounded-xl overflow-hidden border">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3046.876!2d28.9784!3d40.2256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDEzJzMyLjIiTiAyOMKwNTgnNDIuMiJF!5e0!3m2!1str!2str!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3047.5!2d28.9927!3d40.2167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ca3f3b8a6b5555%3A0x1234567890abcdef!2sDemirci%2C%20Dere%C3%A7avu%C5%9F%20Sk.%20No%3A12%2C%2016110%20Nil%C3%BCfer%2FBursa!5e0!3m2!1str!2str!4v1702100000000!5m2!1str!2str"
                   width="100%"
                   height="250"
                   style={{ border: 0 }}
@@ -136,6 +167,16 @@ export default function IletisimPage() {
                   referrerPolicy="no-referrer-when-downgrade"
                   title="SmartGuide Konum"
                 />
+              </div>
+              <div className="mt-2">
+                <a
+                  href="https://www.google.com/maps/search/Demirci+Mah.+Dereçavuş+Sk.+No:12+Nilüfer+Bursa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-primary hover:underline"
+                >
+                  Google Maps&apos;te Aç →
+                </a>
               </div>
             </div>
 
@@ -237,8 +278,11 @@ export default function IletisimPage() {
                         rows={5}
                       />
                     </div>
-                    <Button type="submit" className="w-full" size="lg">
-                      Gönder
+                    {error && (
+                      <p className="text-red-500 text-sm">{error}</p>
+                    )}
+                    <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                      {isSubmitting ? "Gönderiliyor..." : "Gönder"}
                     </Button>
                   </form>
                 )}
