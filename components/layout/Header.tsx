@@ -22,7 +22,7 @@ export default function Header() {
   const kataloglar = [
     { name: "SmartGuide Sunumu", href: "/katalog/sunum" },
     { name: "Apex KKD Kataloğu", href: "/katalog/apex" },
-    { name: "İSG Çözümleri Kataloğu", href: "/katalog/isg-cozumleri" },
+    { name: "İSG Eğitim ve Danışmanlık Kataloğu", href: "/katalog/isg-cozumleri" },
   ];
 
   const isActive = (href: string) => {

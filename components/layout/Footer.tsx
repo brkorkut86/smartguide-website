@@ -95,7 +95,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/katalog/isg-cozumleri" className="text-sm text-gray-400 hover:text-primary transition-colors">
-                  İSG Çözümleri Kataloğu
+                  İSG Eğitim ve Danışmanlık Kataloğu
                 </Link>
               </li>
             </ul>

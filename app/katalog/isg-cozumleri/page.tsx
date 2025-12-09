@@ -19,7 +19,7 @@ export default function ISGCozumleriKatalog() {
                 Ana Sayfa
               </Button>
             </Link>
-            <h1 className="text-xl font-semibold text-gray-900">İSG Çözümleri Kataloğu</h1>
+            <h1 className="text-xl font-semibold text-gray-900">İSG Eğitim ve Danışmanlık Kataloğu</h1>
           </div>
           <div className="flex items-center gap-2">
             <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
@@ -77,7 +77,7 @@ export default function ISGCozumleriKatalog() {
               <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Download className="h-10 w-10 text-primary" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-2">İSG Çözümleri Kataloğu</h2>
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">İSG Eğitim ve Danışmanlık Kataloğu</h2>
               <p className="text-gray-600">
                 Eğitim, danışmanlık ve etkinlik kataloğunu görüntülemek veya indirmek için aşağıdaki butonu kullanın.
               </p>

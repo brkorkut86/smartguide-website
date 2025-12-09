@@ -81,7 +81,7 @@ export default function Home() {
       icon: HardHat,
     },
     {
-      title: "İSG Çözümleri Kataloğu",
+      title: "İSG Eğitim ve Danışmanlık Kataloğu",
       description: "Eğitim, danışmanlık ve etkinlik kataloğu",
       href: "/katalog/isg-cozumleri",
       icon: Shield,
