@@ -96,7 +96,7 @@ colors: {
 - **Company:** SmartGuide Endüstriyel Çözümler Ltd. Şti.
 - **Emails:** ozgur.dogan@smartguide.com.tr, okan.tamer@smartguide.com.tr
 - **Phones:** +90 549 694 80 80, +90 532 322 24 65
-- **Address:** Demirci Mah. Dereçavuş (390) Sk. No: 12/1, Nilüfer / Bursa
+- **Address:** Demirci Mah., Dereçavuş Sk No:12, 16159 Nilüfer/Bursa, Türkiye
 - **Websites:** smartguide.com.tr, wisdomaihub.com
 
 ## Development

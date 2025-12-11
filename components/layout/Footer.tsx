@@ -46,8 +46,8 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-1 text-primary" />
                 <span className="text-sm text-gray-400">
-                  Demirci Mah. Dereçavuş (390) Sk.<br />
-                  No: 12/1, Nilüfer / Bursa
+                  Demirci Mah., Dereçavuş Sk No:12<br />
+                  16159 Nilüfer/Bursa, Türkiye
                 </span>
               </li>
             </ul>

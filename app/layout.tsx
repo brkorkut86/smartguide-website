@@ -79,7 +79,8 @@ export default function RootLayout({
     ],
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Demirci Mah. Dereçavuş (390) Sk. No: 12/1",
+      "streetAddress": "Demirci Mah., Dereçavuş Sk No:12",
+      "postalCode": "16159",
       "addressLocality": "Nilüfer",
       "addressRegion": "Bursa",
       "addressCountry": "TR"

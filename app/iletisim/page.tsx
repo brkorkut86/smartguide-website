@@ -119,8 +119,8 @@ export default function IletisimPage() {
                     <div>
                       <p className="font-semibold text-gray-900 mb-1">Adres</p>
                       <p className="text-gray-600">
-                        Demirci Mah. Dereçavuş (390) Sk.<br />
-                        No: 12/1, Nilüfer / Bursa
+                        Demirci Mah., Dereçavuş Sk No:12<br />
+                        16159 Nilüfer/Bursa, Türkiye
                       </p>
                     </div>
                   </div>
@@ -170,7 +170,7 @@ export default function IletisimPage() {
               </div>
               <div className="mt-2">
                 <a
-                  href="https://www.google.com/maps/search/Demirci+Mah.+Dereçavuş+Sk.+No:12+Nilüfer+Bursa"
+                  href="https://www.google.com/maps/search/Demirci+Mah.+Dereçavuş+Sk+No:12+16159+Nilüfer+Bursa+Türkiye"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-primary hover:underline"
