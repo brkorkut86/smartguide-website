@@ -32,7 +32,7 @@ export default function IletisimPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Get your key at web3forms.com
+          access_key: "885c7fe0-45a2-46cd-9d70-868a7da057fa",
           subject: `SmartGuide İletişim Formu: ${formData.subject}`,
           from_name: formData.name,
           name: formData.name,
