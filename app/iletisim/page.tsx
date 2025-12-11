@@ -170,7 +170,7 @@ export default function IletisimPage() {
               </div>
               <div className="mt-2">
                 <a
-                  href="https://www.google.com/maps/search/Demirci+Mah.+Dereçavuş+Sk+No:12+16159+Nilüfer+Bursa+Türkiye"
+                  href="https://www.google.com/maps/place/Demirci,+Dereçavuş+Sk.+No:12,+16159+Nilüfer%2FBursa,+Türkiye/@40.2089,28.9897,17z"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-primary hover:underline"
