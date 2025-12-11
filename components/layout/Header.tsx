@@ -34,9 +34,8 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
+          <Link href="/" className="-m-1.5 p-1.5">
             <img src="/logo.png" alt="SmartGuide" className="h-10 w-auto" />
-            <span className="text-xl font-bold text-gray-900 hidden sm:inline">SmartGuide</span>
           </Link>
         </div>
 
