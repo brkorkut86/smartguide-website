@@ -74,7 +74,7 @@ export default function ISGCozumleriPage() {
             <Link href="/katalog/isg-cozumleri">
               <Button size="lg" className="bg-primary hover:bg-primary/90">
                 <FileText className="mr-2 h-5 w-5" />
-                İSG Kataloğu
+                İSG Eğitim ve Danışmanlık Hizmetleri Kataloğu
               </Button>
             </Link>
             <Link href="/katalog/apex">
@@ -159,13 +159,13 @@ export default function ISGCozumleriPage() {
                 <div className="mx-auto mb-6 inline-flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <GraduationCap className="h-10 w-10" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Eğitim Talebi</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Eğitim ve Danışmanlık Talebi</h3>
                 <p className="text-gray-600 mb-6">
-                  Firmanıza özel İSG eğitimi için bizimle iletişime geçin.
+                  Eğitim ve Danışmanlık talebi için teklif alın
                 </p>
-                <Link href="/iletisim">
+                <Link href="/katalog/isg-cozumleri">
                   <Button size="lg" className="w-full">
-                    Teklif Alın
+                    İSG Eğitim ve Danışmanlık Kataloğunu İncele
                   </Button>
                 </Link>
               </div>
