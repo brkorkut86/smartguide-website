@@ -32,7 +32,7 @@ export default function IletisimPage() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          access_key: "885c7fe0-45a2-46cd-9d70-868a7da057fa",
+          access_key: "b63099fe-4542-4985-a190-8564a1177311",
           subject: `SmartGuide İletişim Formu: ${formData.subject}`,
           from_name: formData.name,
           name: formData.name,
