@@ -9,7 +9,7 @@ Corporate website for **SmartGuide Endüstriyel Çözümler Ltd. Şti.** - an in
 - **Styling:** Tailwind CSS 3.4
 - **UI Components:** Custom components using class-variance-authority (CVA)
 - **Icons:** Lucide React
-- **Deployment:** Vercel (static export)
+- **Deployment:** Azure Static Web Apps (static export)
 
 ## Project Structure
 
@@ -110,11 +110,34 @@ npm run start        # Start production server
 
 ## Deployment
 
-The site is deployed on Vercel with automatic deploys from the `main` branch.
+The site is deployed on **Azure Static Web Apps** (client's account).
+
+### Production URL
+https://ashy-coast-025020710.2.azurestaticapps.net
+
+### Azure Resources
+| Resource | Value |
+|----------|-------|
+| Resource Group | `smartguide-rg` |
+| Static Web App | `smartguide-website` |
+| Plan | Free |
+| Region | Central US |
+
+### Manual Deployment
+To redeploy, use the Azure Static Web Apps CLI with the deployment token:
 
 ```bash
-vercel --prod        # Deploy to production
+# Build the site first
+npm run build
+
+# Deploy to Azure (replace <TOKEN> with the deployment token from Azure Portal)
+npx @azure/static-web-apps-cli deploy ./out --deployment-token <TOKEN> --env production
 ```
+
+To get the deployment token:
+1. Go to Azure Portal → Static Web Apps → smartguide-website
+2. Click "Manage deployment token" in the left menu
+3. Copy the token
 
 ## GitHub Repository
 
@@ -122,7 +145,7 @@ https://github.com/brkorkut86/smartguide-website
 
 ## Notes for Future Development
 
-- Contact form currently logs to console. To enable email sending, integrate Formspree or similar service.
+- Contact form has been removed; page shows contact info only.
 - Reference logos are text-based placeholders. Replace with actual company logos when available.
 - Hero images (isg.png, akilli.png) can be replaced with higher quality images.
-- For custom domain setup, configure DNS in Vercel dashboard.
+- For custom domain setup, see `CUSTOM_DOMAIN_SETUP.md` for detailed instructions.
