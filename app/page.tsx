@@ -82,7 +82,7 @@ export default function Home() {
     },
     {
       title: "Von Maske Kataloğu",
-      description: "Solunum Koruyucular",
+      description: "Solunum Koruyucular ürün kataloğu",
       href: "https://www.vonmaske.com/",
       icon: Shield,
       external: true,

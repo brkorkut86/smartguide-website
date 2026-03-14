@@ -22,7 +22,7 @@ export default function Header() {
   const kataloglar = [
     { name: "SmartGuide Sunumu", href: "/katalog/sunum" },
     { name: "Apex KKD Kataloğu", href: "/katalog/apex" },
-    { name: "Von Maske", href: "https://www.vonmaske.com/", external: true },
+    { name: "Von Maske Kataloğu", href: "https://www.vonmaske.com/", external: true },
     { name: "İSG Eğitim ve Danışmanlık Kataloğu", href: "/katalog/isg-cozumleri" },
   ];
 
