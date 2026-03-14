@@ -81,15 +81,18 @@ export default function Home() {
       icon: HardHat,
     },
     {
+      title: "Von Maske Kataloğu",
+      description: "Solunum Koruyucular",
+      href: "https://www.vonmaske.com/",
+      icon: Shield,
+      external: true,
+    },
+    {
       title: "İSG Eğitim ve Danışmanlık Kataloğu",
       description: "Eğitim, danışmanlık ve etkinlik kataloğu",
       href: "/katalog/isg-cozumleri",
       icon: Shield,
     },
-  ];
-
-  const referanslar = [
-    "Mercedes-Benz", "Beko", "Roketsan", "Aselsan", "Borusan", "Hidromek"
   ];
 
   return (
@@ -295,9 +298,12 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {kataloglar.map((katalog) => {
               const Icon = katalog.icon;
+              const linkProps = katalog.external
+                ? { href: katalog.href, target: "_blank" as const, rel: "noopener noreferrer" }
+                : { href: katalog.href };
               return (
                 <Card key={katalog.title} className="hover:shadow-xl transition-shadow text-center">
                   <CardHeader>
@@ -308,12 +314,21 @@ export default function Home() {
                     <CardDescription>{katalog.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Link href={katalog.href}>
-                      <Button className="w-full">
-                        <FileText className="mr-2 h-4 w-4" />
-                        Kataloğu Görüntüle
-                      </Button>
-                    </Link>
+                    {katalog.external ? (
+                      <a {...linkProps}>
+                        <Button className="w-full">
+                          <FileText className="mr-2 h-4 w-4" />
+                          Kataloğu Görüntüle
+                        </Button>
+                      </a>
+                    ) : (
+                      <Link href={katalog.href}>
+                        <Button className="w-full">
+                          <FileText className="mr-2 h-4 w-4" />
+                          Kataloğu Görüntüle
+                        </Button>
+                      </Link>
+                    )}
                   </CardContent>
                 </Card>
               );
@@ -336,17 +351,6 @@ export default function Home() {
             <p className="mt-4 text-lg text-gray-600">
               Türkiye&apos;nin önde gelen sanayi kuruluşlarına hizmet veriyoruz
             </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
-            {referanslar.map((ref) => (
-              <div
-                key={ref}
-                className="bg-white rounded-xl p-4 flex items-center justify-center h-20 hover:shadow-md transition-shadow"
-              >
-                <span className="font-semibold text-gray-700">{ref}</span>
-              </div>
-            ))}
           </div>
 
           <div className="text-center">

@@ -22,6 +22,7 @@ export default function Header() {
   const kataloglar = [
     { name: "SmartGuide Sunumu", href: "/katalog/sunum" },
     { name: "Apex KKD Kataloğu", href: "/katalog/apex" },
+    { name: "Von Maske", href: "https://www.vonmaske.com/", external: true },
     { name: "İSG Eğitim ve Danışmanlık Kataloğu", href: "/katalog/isg-cozumleri" },
   ];
 
@@ -90,13 +91,25 @@ export default function Header() {
               <div className="absolute top-full right-0 mt-2 w-56 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-50">
                 <div className="py-1">
                   {kataloglar.map((katalog) => (
-                    <Link
-                      key={katalog.name}
-                      href={katalog.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
-                    >
-                      {katalog.name}
-                    </Link>
+                    katalog.external ? (
+                      <a
+                        key={katalog.name}
+                        href={katalog.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
+                      >
+                        {katalog.name}
+                      </a>
+                    ) : (
+                      <Link
+                        key={katalog.name}
+                        href={katalog.href}
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-primary"
+                      >
+                        {katalog.name}
+                      </Link>
+                    )
                   ))}
                 </div>
               </div>
@@ -131,14 +144,27 @@ export default function Header() {
             <div className="border-t pt-2 mt-2">
               <p className="px-3 py-2 text-sm font-semibold text-gray-900">Kataloglar</p>
               {kataloglar.map((katalog) => (
-                <Link
-                  key={katalog.name}
-                  href={katalog.href}
-                  className="block rounded-lg px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-50"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {katalog.name}
-                </Link>
+                katalog.external ? (
+                  <a
+                    key={katalog.name}
+                    href={katalog.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-lg px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-50"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {katalog.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={katalog.name}
+                    href={katalog.href}
+                    className="block rounded-lg px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-50"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {katalog.name}
+                  </Link>
+                )
               ))}
             </div>
             <div className="pt-4">

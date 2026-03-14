@@ -42,7 +42,7 @@ export default function ISGCozumleriPage() {
 
   const partners = [
     { name: "Apex", desc: "Kişisel Koruyucu Donanımlar" },
-    { name: "Dräger", desc: "Solunum Koruma ve Gaz Algılama" },
+    { name: "Von Maske", desc: "Solunum Koruyucular" },
     { name: "BBU", desc: "İş Güvenliği Ekipmanları" },
     { name: "PRIORIT", desc: "Yangına Dayanıklı Dolaplar" },
   ];
@@ -242,7 +242,7 @@ export default function ISGCozumleriPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {partners.map((partner) => (
               <Card key={partner.name} className="text-center p-6 hover:shadow-lg transition-shadow">
                 <CardHeader className="pb-2">
