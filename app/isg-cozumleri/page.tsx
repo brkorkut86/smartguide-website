@@ -82,6 +82,11 @@ export default function ISGCozumleriPage() {
                 Apex KKD Kataloğu
               </Button>
             </Link>
+            <a href="https://www.vonmaske.com/" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                Von Maske Kataloğu
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -116,13 +121,19 @@ export default function ISGCozumleriPage() {
             })}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-12 flex flex-wrap justify-center gap-4">
             <Link href="/katalog/apex">
               <Button size="lg">
                 Apex KKD Kataloğunu İncele
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
+            <a href="https://www.vonmaske.com/" target="_blank" rel="noopener noreferrer">
+              <Button size="lg">
+                Von Maske Kataloğunu İncele
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
